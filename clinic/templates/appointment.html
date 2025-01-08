@@ -1,0 +1,66 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+<div class="container" style="margin-top: 50px;">
+  <h2 class="text-center">Add Appointment Page </h2>
+  <br><br>
+  {% if messages %}
+ <ul class="messages">
+  {% for message in messages %}
+  <li {% if message.tags %} class="alert alert-{{message.tags}}"{% endif %}>{{message}}</li>
+  {% endfor %}
+ </ul>
+ {% endif %}
+<form method="post" action=".">
+  {% csrf_token %}
+    <div class="input-group">
+      <label class="input-group">Doctor's Name</label>
+      <select name="doctor">
+        {% for doc in doctor %}
+        <option value="{{doc.name}}">{{doc.name}} [{{doc.id}}]</option>
+        {% endfor %}
+      </select>
+    </div>
+    <br>
+    <br>
+    <div class="input-group">
+        <label class="input-group">Patient's Name</label>
+        <select name="patient">
+          {% for pat in patient %}
+          <option value="{{pat.name}}">{{pat.name}} [{{pat.id}}]</option>
+          {% endfor %}
+        </select>
+      </div>
+    <br><br>
+    <div class="input-group">
+        <label class="input-group">Date</label>
+        <input id="email" type="date" class="form-control" name="date1"  required>
+      </div>
+      <br>
+      <br>
+      <div class="input-group">
+        <label class="input-group">Time</label>
+        <input id="email" type="time" class="form-control" name="time1"  required>
+      </div>
+      <br><br>
+
+  <input type="submit" value="add" class=" input-group btn btn-primary text-center" >
+  </form>
+
+ 
+</div>
+{% if error == "no" %}
+<script type="text/javascript">
+  alert("You have succesfully added an appointment");
+  window.location.href = "{% url 'view_appointment' %}";
+</script>
+{% endif %}
+{% if error == "yes" %}
+<script type="text/javascript">
+  alert("Something went wrong please try again");
+  window.location.href = ("{% url 'add_appointment' %}");
+</script>
+{% endif %}
+
+
+{% endblock %}
