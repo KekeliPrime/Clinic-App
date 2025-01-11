@@ -23,6 +23,9 @@ def signup(request):
     context = {'form': form}
     return render(request,'signup.html', context)
 
+def signin(request):
+    return render(request, 'signin.html')
+
 def contact(request):
     return render(request, 'contact.html')
 
