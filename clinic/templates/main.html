@@ -58,8 +58,9 @@
           <li class="nav-item"><a class="nav-link"href="{% url 'contact' %}"><i class="fa fa-phone"></i> Contact</a></li>
           <li class="nav-item"><a class="nav-link"href="{% url 'about' %}"><i class="fa fa-address-card"></i>About</a></li>
           <li class="nav-item"><a class="nav-link"href="{% url 'register' %}"><i class="fa fa-address-card"></i>Register</a></li>
-          <li class="nav-item"><a class="nav-link"href="#"><i class="fa fa-address-card"></i>Login</a></li>
+          <li class="nav-item"><a class="nav-link"href="{% url 'signin' %}"><i class="fa fa-address-card"></i>Login</a></li>
            {% endif %}
+           {% if request.user.is_authenticated %}
             <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"> Nurse</a>
             <div class="dropdown-menu">
               <a class="dropdown-item" href="#">Add Nurse </a>
@@ -90,6 +91,7 @@
                   </div></li>
                 <li class="nav-item"><a onclick="return confirm('Please are you sure you want to return to the admin dashboard')"; class="nav-link"href="#"><i class="fa fa-home"></i> Admin Dashboard</a></li>   
             <li class="nav-item"><a onclick="return confirm('Please are you sure you want to signout')"; class="nav-link"href="#"><i class="fa fa-home"></i> logout</a></li>
+            {% endif %}
           
         </ul>
       </div>
