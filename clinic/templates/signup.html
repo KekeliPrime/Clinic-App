@@ -1,0 +1,24 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+<div class="container mt-4">
+  <div class="d-flex align-items-center">
+    <!-- Logo -->
+   
+  </div>
+</div>
+
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <h2 class="text-center">Sign Up</h2>
+        <form method="post" novalidate>
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary btn-block">Sign Up</button>
+        </form>
+        <div class="text-center mt-3">
+            <a href="{% url 'signin' %}">Already have an account? Login</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
