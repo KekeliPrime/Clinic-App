@@ -24,6 +24,10 @@ def signup(request):
     return render(request,'signup.html', context)
 
 def signin(request):
+    if request.user.is_authenticated:
+        next = request.META.get("HTTP_REFERER")
+        return redirect(next)
+    
     return render(request, 'signin.html')
 
 
