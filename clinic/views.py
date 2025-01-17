@@ -26,6 +26,12 @@ def signup(request):
 def signin(request):
     return render(request, 'signin.html')
 
+
+def admin_dashboard(request):
+    if not request.user.is_admin or request.user.is_sammykeys:
+        return redirect("signin")
+    return render(request, 'admin_dashboard.html')
+
 def contact(request):
     return render(request, 'contact.html')
 
